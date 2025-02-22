@@ -1,40 +1,43 @@
 from confluent_kafka import Producer
 import json
 import sys
+import os
 
+kafka_config = {
+    "bootstrap.servers": os.getenv("KAFKA_BROKER", "default_broker_address"),
+    "security.protocol": "SASL_SSL",
+    "sasl.mechanisms": "PLAIN",
+    "sasl.username": os.getenv("KAFKA_USERNAME", "default_username"),
+    "sasl.password": os.getenv("KAFKA_PASSWORD", "default_password"),
+    "client.id": "python-producer",
+    "acks": "all",
+}
 
 
 def create_kafka_producer():
     """Create and return a Kafka producer instance"""
-    try:
-        # Configurazione del producer Kafka con autenticazione
-        kafka_config = {
-            "bootstrap.servers": "confluent.eks-dev.eu-central-1.aws.cervedgroup.com:9093",
-            "security.protocol": "SASL_SSL",
-            "sasl.mechanisms": "PLAIN",
-            "sasl.username": "kafka_client",
-            "sasl.password": "kafka_client-secret",
-            "client.id": "python-producer",
-            "acks": "all",  # Garantisce che il messaggio venga ricevuto dai broker
-        }
-
+    try:     
         # Creazione del producer Kafka        
         return Producer(kafka_config)
     except Exception as e:
         print(f"Errore nella creazione del producer Kafka: {str(e)}")
         sys.exit(1)
 
-producer = create_kafka_producer()
 
-def produce(topic, message):
-    """Send a message to specified Kafka topic"""    
+def produce(producer, topic, message):
+    """Send a message to specified Kafka topic"""
     try:
-        future = producer.send(topic, value=message)
-        # Attendiamo la conferma dell'invio
+        message_json = json.dumps(message)
+        future = producer.send(topic, value=message_json)
         record_metadata = future.get(timeout=10)
         print(f"Messaggio inviato con successo:")
         print(f"Topic: {record_metadata.topic}")
         print(f"Partition: {record_metadata.partition}")
         print(f"Offset: {record_metadata.offset}")
+    except KafkaException as e:
+        print(f"Errore di Kafka: {str(e)}")
     except Exception as e:
-        print(f"Errore nell'invio del messaggio: {str(e)}")
+        print(f"Errore generico: {str(e)}")
+    finally:
+        # Assicuriamoci che tutti i messaggi siano inviati
+        producer.flush()
