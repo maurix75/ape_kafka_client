@@ -2,6 +2,8 @@ from confluent_kafka import Producer
 import json
 import sys
 
+
+
 def create_kafka_producer():
     """Create and return a Kafka producer instance"""
     try:
@@ -16,15 +18,16 @@ def create_kafka_producer():
             "acks": "all",  # Garantisce che il messaggio venga ricevuto dai broker
         }
 
-        # Creazione del producer Kafka
-        producer = Producer(kafka_config)
-        return producer
+        # Creazione del producer Kafka        
+        return Producer(kafka_config)
     except Exception as e:
         print(f"Errore nella creazione del producer Kafka: {str(e)}")
         sys.exit(1)
 
-def produce(producer, topic, message):
-    """Send a message to specified Kafka topic"""
+producer = create_kafka_producer()
+
+def produce(topic, message):
+    """Send a message to specified Kafka topic"""    
     try:
         future = producer.send(topic, value=message)
         # Attendiamo la conferma dell'invio
