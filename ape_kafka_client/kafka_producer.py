@@ -1,39 +1,58 @@
-from confluent_kafka import Producer
+import os
+from confluent_kafka import Producer, KafkaException
 import json
 import sys
-import os
+import configparser
 
-kafka_config = {
-    "bootstrap.servers": os.getenv("KAFKA_BROKER", "default_broker_address"),
-    "security.protocol": "SASL_SSL",
-    "sasl.mechanisms": "PLAIN",
-    "sasl.username": os.getenv("KAFKA_USERNAME", "default_username"),
-    "sasl.password": os.getenv("KAFKA_PASSWORD", "default_password"),
-    "client.id": "python-producer",
-    "acks": "all",
-}
+# Funzione per leggere la configurazione da un file .properties
+def read_config(file_path):
+    """Legge le configurazioni dal file .properties"""
+    config = configparser.ConfigParser()
+    config.read(file_path)
+    
+    # Estrarre i valori dalla sezione 'kafka'
+    kafka_config = {
+        "bootstrap.servers": config.get('kafka', 'KAFKA_BROKER', fallback='default_broker_address'),
+        "security.protocol": "SASL_SSL",
+        "sasl.mechanisms": "PLAIN",
+        "sasl.username": config.get('kafka', 'KAFKA_USERNAME', fallback='default_username'),
+        "sasl.password": config.get('kafka', 'KAFKA_PASSWORD', fallback='default_password'),
+        "client.id": "python-producer",
+        "acks": "all",
+    }
+    return kafka_config
 
+# Creazione del producer Kafka con configurazione dal file
+def create_kafka_producer(config_file='conf_env.properties'):
+    """Crea e restituisce un'istanza di un producer Kafka utilizzando la configurazione dal file"""
+    try:       
 
-def create_kafka_producer():
-    """Create and return a Kafka producer instance"""
-    try:     
-        # Creazione del producer Kafka        
+        if not os.path.isfile(config_file):
+            print(f"Errore: Il file di configurazione '{config_file}' non esiste.")
+            sys.exit(1)
+        kafka_config = read_config(config_file)
         return Producer(kafka_config)
     except Exception as e:
         print(f"Errore nella creazione del producer Kafka: {str(e)}")
         sys.exit(1)
 
-
 def produce(producer, topic, message):
-    """Send a message to specified Kafka topic"""
+    """Invia un messaggio al topic Kafka specificato"""
     try:
+        # Serializzazione del messaggio in formato JSON
         message_json = json.dumps(message)
+
+        # Invio del messaggio al topic specificato
         future = producer.send(topic, value=message_json)
+
+        # Attendere la conferma dell'invio
         record_metadata = future.get(timeout=10)
+
         print(f"Messaggio inviato con successo:")
         print(f"Topic: {record_metadata.topic}")
         print(f"Partition: {record_metadata.partition}")
         print(f"Offset: {record_metadata.offset}")
+
     except KafkaException as e:
         print(f"Errore di Kafka: {str(e)}")
     except Exception as e:
@@ -41,3 +60,5 @@ def produce(producer, topic, message):
     finally:
         # Assicuriamoci che tutti i messaggi siano inviati
         producer.flush()
+
+

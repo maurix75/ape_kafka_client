@@ -14,7 +14,7 @@ def create_kafka_consumer():
         }
 
         # Creazione del producer Kafka
-        return Consumer(kafka_config)
+        return ApeConsumer(kafka_config)
     except Exception as e:
         print(f"Errore nella creazione del consumer Kafka: {str(e)}")
         sys.exit(1)
