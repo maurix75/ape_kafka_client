@@ -4,18 +4,78 @@ from confluent_kafka.schema_registry.avro import AvroSerializer
 from confluent_kafka.serialization import StringSerializer
 from typing import Dict, Any
 import json
-
 import os
 from configparser import ConfigParser
 
 class ApeProducer:
+
+    
+
+    def create_kafka_config_from_file(config_file_name: str) -> dict:
+
+        config_file = ApeProducer.find_file_path(config_file_name)
+        
+        if config_file:
+            print(f"File trovato: {config_file}")
+        else:
+            print("File non trovato")        
+            raise FileNotFoundError(f"File di configurazione {config_file} non trovato")
+    
+        # Leggi il file di configurazione
+        raw_config = {}
+        with open(config_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    try:
+                        key, value = line.split('=', 1)
+                        raw_config[key.strip()] = value.strip()
+                    except ValueError:
+                        print(f"Impossibile analizzare la riga: {line}")
+    
+        # Crea la configurazione del client Kafka
+        kafka_config = {
+            'bootstrap.servers': raw_config.get('KAFKA.CLOUD.BOOTSTRAP.SERVERS'),
+            'security.protocol': 'SASL_SSL',
+            'sasl.mechanisms': 'PLAIN',
+            'sasl.username': raw_config.get('KAFKA.INNOVATIVE.USER'),
+            'sasl.password': raw_config.get('KAFKA.INNOVATIVE.PASSWORD'),
+        }
+    
+        # Crea la configurazione del client Schema Registry
+        schema_registry_config = {
+            'url': raw_config.get('KAFKA.CLOUD.SCHEMA.REGISTRY.HOST'),
+            'basic.auth.user.info': f"{raw_config.get('KAFKA.CLOUD.SCHEMA.REGISTRY.USER')}:{raw_config.get('KAFKA.CLOUD.SCHEMA.REGISTRY.PASSWORD')}"
+        }
+    
+        return {
+            'kafka_config': kafka_config,
+            'schema_registry_config': schema_registry_config
+        }
+    
+    def find_file_path(filename: str) -> str:
+        current_dir = os.path.abspath(os.path.dirname(__file__))  # Directory dello script
+    
+        while True:
+            candidate = os.path.join(current_dir, filename)
+            if os.path.isfile(candidate):
+                return candidate
+            
+            parent_dir = os.path.dirname(current_dir)  # Salire di un livello
+            if parent_dir == current_dir:  # Se siamo alla root, fermarsi
+                break
+            current_dir = parent_dir
+        
+        return None  # File non trovato
+
     def __init__(self, config_file: str = "conf_env.properties"):
-        # Load configuration from properties file
-        kafka_config = self._load_config(config_file)
+        # Ottieni la configurazione dal file
+        configs = ApeProducer.create_kafka_config_from_file(config_file)
+        kafka_config = configs['kafka_config']
+        schema_registry_config = configs['schema_registry_config']
         
         # Schema Registry client configuration
-        schema_registry_conf = {'url': kafka_config.get('schema.registry.url')}
-        schema_registry_client = SchemaRegistryClient(schema_registry_conf)
+        schema_registry_client = SchemaRegistryClient(schema_registry_config)
 
         # Create Avro serializer
         value_serializer = AvroSerializer(
@@ -25,30 +85,17 @@ class ApeProducer:
 
         # Producer configuration
         producer_conf = {
-            'bootstrap.servers': kafka_config.get('bootstrap.servers'),
+            'bootstrap.servers': kafka_config['bootstrap.servers'],
             'key.serializer': StringSerializer('utf_8'),
-            'value.serializer': value_serializer
+            'value.serializer': value_serializer,
+            'security.protocol': kafka_config['security.protocol'], 
+            'sasl.mechanisms': kafka_config['sasl.mechanisms'],
+            'sasl.username': kafka_config['sasl.username'],
+            'sasl.password': kafka_config['sasl.password']
         }
-        # Add any additional Kafka configuration
-        producer_conf.update(kafka_config)
         
         self.producer = SerializingProducer(producer_conf)
-        self.topic = kafka_config.get('topic', 'ape-topic')
-
-    def _load_config(self, config_file: str) -> dict:
-        if not os.path.exists(config_file):
-            raise FileNotFoundError(f"Configuration file {config_file} not found")
-            
-        config = {}
-        with open(config_file, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    key, value = line.split('=', 1)
-                    config[key.strip()] = value.strip()
-        return config
-
-    
+        self.topic = 'ape-topic'  # Potresti voler rendere questo configurabile
 
     def _get_avro_schema(self) -> str:
         return """
@@ -119,28 +166,29 @@ class ApeProducer:
         """Flush the producer"""
         self.producer.flush()
 
-def parse_ape_json(file_path: str) -> Dict[str, Any]:
-    """Parse APE JSON file and create a single document"""
-    ape_doc = {}
-    with open(file_path, 'r') as f:
-        for line in f:
-            try:
-                field = json.loads(line)
-                ape_doc[field['label']] = field['value']
-            except json.JSONDecodeError:
-                continue
-    return ape_doc
+    def parse_ape_json(file_name: str) -> Dict[str, Any]:
+        """Parse APE JSON file and create a single document"""
+        ape_doc = {}
+        file_path=os.path.join(os.path.dirname(__file__), file_name)
+        with open(file_path, 'r') as f:
+            for line in f:
+                try:
+                    field = json.loads(line)
+                    ape_doc[field['label']] = field['value']
+                except json.JSONDecodeError:
+                    continue
+        return ape_doc
+
+
+
 
 # Example usage
 if __name__ == "__main__":
-    producer = APEProducer(
-        bootstrap_servers='localhost:9092',
-        schema_registry_url='http://localhost:8081'
-    )
+    producer = ApeProducer()
     
     # Example: Process an APE JSON file
-    ape_file = "/path/to/your/ape_fields.json"
-    ape_data = parse_ape_json(ape_file)
+    ape_file = "32888643.json"
+    ape_data = ApeProducer.parse_ape_json(ape_file)
     
     try:
         # Use the file name or a unique identifier as the key

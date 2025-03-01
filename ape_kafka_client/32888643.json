@@ -1,0 +1,1046 @@
+[
+{
+    "label": "destinazione_uso_residenziale",
+    "value": "selected"
+}
+{
+    "label": "destinazione_uso_non_residenziale",
+    "value": "unselected"
+}
+{
+    "label": "destinazione_uso_classificazione",
+    "value": "E.1(1)"
+}
+{
+    "label": "oggetto_attestato_intero_edificio",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_unita_immobiliare",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_gruppo_unita_immobiliare",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_numero_unita",
+    "value": "1"
+}
+{
+    "label": "oggetto_attestato_nuova_costruzione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_passaggio_proprieta",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_locazione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_ristrutturazione_importante",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_riqualificazione_energetica",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_altro",
+    "value": "unselected"
+}
+{
+    "label": "dati_identificativi_regione",
+    "value": "Liguria"
+}
+{
+    "label": "dati_identificativi_comune",
+    "value": "Arenzano (GE)"
+}
+{
+    "label": "dati_identificativi_indirizzo",
+    "value": "Via Punta del Gabbiano 20"
+}
+{
+    "label": "dati_identificativi_piano",
+    "value": "2"
+}
+{
+    "label": "dati_identificativi_interno",
+    "value": "A"
+}
+{
+    "label": "dati_identificativi_zona_climatica",
+    "value": "D"
+}
+{
+    "label": "dati_identificativi_anno_costruzione",
+    "value": "1967"
+}
+{
+    "label": "dati_identificativi_superficie_riscaldata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_superficie_raffrescata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_volume_lordo_riscaldato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_volume_lordo_raffrescato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_gis_lat",
+    "value": "44,4,"
+}
+{
+    "label": "dati_identificativi_gis_lon",
+    "value": "8,666667"
+}
+{
+    "label": "dati_identificativi_provincia",
+    "value": 0.975
+}
+{
+    "label": "dati_identificativi_cod_istat",
+    "value": 0.976
+}
+{
+    "label": "dati_identificativi_cap",
+    "value": 0.975
+}
+{
+    "label": "destinazione_uso_residenziale",
+    "value": "selected"
+}
+{
+    "label": "destinazione_uso_non_residenziale",
+    "value": "unselected"
+}
+{
+    "label": "destinazione_uso_classificazione",
+    "value": "E.1(1)"
+}
+{
+    "label": "oggetto_attestato_intero_edificio",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_unita_immobiliare",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_gruppo_unita_immobiliare",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_numero_unita",
+    "value": "1"
+}
+{
+    "label": "oggetto_attestato_nuova_costruzione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_passaggio_proprieta",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_locazione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_ristrutturazione_importante",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_riqualificazione_energetica",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_altro",
+    "value": "unselected"
+}
+{
+    "label": "dati_identificativi_regione",
+    "value": "Liguria"
+}
+{
+    "label": "dati_identificativi_comune",
+    "value": "Arenzano (GE)"
+}
+{
+    "label": "dati_identificativi_indirizzo",
+    "value": "Via Punta del Gabbiano 20"
+}
+{
+    "label": "dati_identificativi_piano",
+    "value": "2"
+}
+{
+    "label": "dati_identificativi_interno",
+    "value": "A"
+}
+{
+    "label": "dati_identificativi_zona_climatica",
+    "value": "D"
+}
+{
+    "label": "dati_identificativi_anno_costruzione",
+    "value": "1967"
+}
+{
+    "label": "dati_identificativi_superficie_riscaldata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_superficie_raffrescata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_volume_lordo_riscaldato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_volume_lordo_raffrescato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_gis_lat",
+    "value": "44,4,"
+}
+{
+    "label": "dati_identificativi_gis_lon",
+    "value": "8,666667"
+}
+{
+    "label": "dati_identificativi_provincia",
+    "value": 0.975
+}
+{
+    "label": "dati_identificativi_cod_istat",
+    "value": 0.976
+}
+{
+    "label": "dati_identificativi_cap",
+    "value": 0.975
+}
+{
+    "label": "destinazione_uso_residenziale",
+    "value": "selected"
+}
+{
+    "label": "destinazione_uso_non_residenziale",
+    "value": "unselected"
+}
+{
+    "label": "destinazione_uso_classificazione",
+    "value": "E.1(1)"
+}
+{
+    "label": "oggetto_attestato_intero_edificio",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_unita_immobiliare",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_gruppo_unita_immobiliare",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_numero_unita",
+    "value": "1"
+}
+{
+    "label": "oggetto_attestato_nuova_costruzione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_passaggio_proprieta",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_locazione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_ristrutturazione_importante",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_riqualificazione_energetica",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_altro",
+    "value": "unselected"
+}
+{
+    "label": "dati_identificativi_regione",
+    "value": "Liguria"
+}
+{
+    "label": "dati_identificativi_comune",
+    "value": "Arenzano (GE)"
+}
+{
+    "label": "dati_identificativi_indirizzo",
+    "value": "Via Punta del Gabbiano 20"
+}
+{
+    "label": "dati_identificativi_piano",
+    "value": "2"
+}
+{
+    "label": "dati_identificativi_interno",
+    "value": "A"
+}
+{
+    "label": "dati_identificativi_zona_climatica",
+    "value": "D"
+}
+{
+    "label": "dati_identificativi_anno_costruzione",
+    "value": "1967"
+}
+{
+    "label": "dati_identificativi_superficie_riscaldata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_superficie_raffrescata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_volume_lordo_riscaldato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_volume_lordo_raffrescato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_gis_lat",
+    "value": "44,4,"
+}
+{
+    "label": "dati_identificativi_gis_lon",
+    "value": "8,666667"
+}
+{
+    "label": "dati_identificativi_provincia",
+    "value": 0.975
+}
+{
+    "label": "dati_identificativi_cod_istat",
+    "value": 0.976
+}
+{
+    "label": "dati_identificativi_cap",
+    "value": 0.975
+}
+{
+    "label": "destinazione_uso_residenziale",
+    "value": "selected"
+}
+{
+    "label": "destinazione_uso_non_residenziale",
+    "value": "unselected"
+}
+{
+    "label": "destinazione_uso_classificazione",
+    "value": "E.1(1)"
+}
+{
+    "label": "oggetto_attestato_intero_edificio",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_unita_immobiliare",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_gruppo_unita_immobiliare",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_numero_unita",
+    "value": "1"
+}
+{
+    "label": "oggetto_attestato_nuova_costruzione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_passaggio_proprieta",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_locazione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_ristrutturazione_importante",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_riqualificazione_energetica",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_altro",
+    "value": "unselected"
+}
+{
+    "label": "dati_identificativi_regione",
+    "value": "Liguria"
+}
+{
+    "label": "dati_identificativi_comune",
+    "value": "Arenzano (GE)"
+}
+{
+    "label": "dati_identificativi_indirizzo",
+    "value": "Via Punta del Gabbiano 20"
+}
+{
+    "label": "dati_identificativi_piano",
+    "value": "2"
+}
+{
+    "label": "dati_identificativi_interno",
+    "value": "A"
+}
+{
+    "label": "dati_identificativi_zona_climatica",
+    "value": "D"
+}
+{
+    "label": "dati_identificativi_anno_costruzione",
+    "value": "1967"
+}
+{
+    "label": "dati_identificativi_superficie_riscaldata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_superficie_raffrescata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_volume_lordo_riscaldato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_volume_lordo_raffrescato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_gis_lat",
+    "value": "44,4,"
+}
+{
+    "label": "dati_identificativi_gis_lon",
+    "value": "8,666667"
+}
+{
+    "label": "dati_identificativi_provincia",
+    "value": 0.975
+}
+{
+    "label": "dati_identificativi_cod_istat",
+    "value": 0.976
+}
+{
+    "label": "dati_identificativi_cap",
+    "value": 0.975
+}
+{
+    "label": "destinazione_uso_residenziale",
+    "value": "selected"
+}
+{
+    "label": "destinazione_uso_non_residenziale",
+    "value": "unselected"
+}
+{
+    "label": "destinazione_uso_classificazione",
+    "value": "E.1(1)"
+}
+{
+    "label": "oggetto_attestato_intero_edificio",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_unita_immobiliare",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_gruppo_unita_immobiliare",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_numero_unita",
+    "value": "1"
+}
+{
+    "label": "oggetto_attestato_nuova_costruzione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_passaggio_proprieta",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_locazione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_ristrutturazione_importante",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_riqualificazione_energetica",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_altro",
+    "value": "unselected"
+}
+{
+    "label": "dati_identificativi_regione",
+    "value": "Liguria"
+}
+{
+    "label": "dati_identificativi_comune",
+    "value": "Arenzano (GE)"
+}
+{
+    "label": "dati_identificativi_indirizzo",
+    "value": "Via Punta del Gabbiano 20"
+}
+{
+    "label": "dati_identificativi_piano",
+    "value": "2"
+}
+{
+    "label": "dati_identificativi_interno",
+    "value": "A"
+}
+{
+    "label": "dati_identificativi_zona_climatica",
+    "value": "D"
+}
+{
+    "label": "dati_identificativi_anno_costruzione",
+    "value": "1967"
+}
+{
+    "label": "dati_identificativi_superficie_riscaldata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_superficie_raffrescata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_volume_lordo_riscaldato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_volume_lordo_raffrescato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_gis_lat",
+    "value": "44,4,"
+}
+{
+    "label": "dati_identificativi_gis_lon",
+    "value": "8,666667"
+}
+{
+    "label": "dati_identificativi_provincia",
+    "value": 0.975
+}
+{
+    "label": "dati_identificativi_cod_istat",
+    "value": 0.976
+}
+{
+    "label": "dati_identificativi_cap",
+    "value": 0.975
+}
+{
+    "label": "destinazione_uso_residenziale",
+    "value": "selected"
+}
+{
+    "label": "destinazione_uso_non_residenziale",
+    "value": "unselected"
+}
+{
+    "label": "destinazione_uso_classificazione",
+    "value": "E.1(1)"
+}
+{
+    "label": "oggetto_attestato_intero_edificio",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_unita_immobiliare",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_gruppo_unita_immobiliare",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_numero_unita",
+    "value": "1"
+}
+{
+    "label": "oggetto_attestato_nuova_costruzione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_passaggio_proprieta",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_locazione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_ristrutturazione_importante",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_riqualificazione_energetica",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_altro",
+    "value": "unselected"
+}
+{
+    "label": "dati_identificativi_regione",
+    "value": "Liguria"
+}
+{
+    "label": "dati_identificativi_comune",
+    "value": "Arenzano (GE)"
+}
+{
+    "label": "dati_identificativi_indirizzo",
+    "value": "Via Punta del Gabbiano 20"
+}
+{
+    "label": "dati_identificativi_piano",
+    "value": "2"
+}
+{
+    "label": "dati_identificativi_interno",
+    "value": "A"
+}
+{
+    "label": "dati_identificativi_zona_climatica",
+    "value": "D"
+}
+{
+    "label": "dati_identificativi_anno_costruzione",
+    "value": "1967"
+}
+{
+    "label": "dati_identificativi_superficie_riscaldata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_superficie_raffrescata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_volume_lordo_riscaldato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_volume_lordo_raffrescato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_gis_lat",
+    "value": "44,4,"
+}
+{
+    "label": "dati_identificativi_gis_lon",
+    "value": "8,666667"
+}
+{
+    "label": "dati_identificativi_provincia",
+    "value": 0.975
+}
+{
+    "label": "dati_identificativi_cod_istat",
+    "value": 0.976
+}
+{
+    "label": "dati_identificativi_cap",
+    "value": 0.975
+}
+{
+    "label": "destinazione_uso_residenziale",
+    "value": "selected"
+}
+{
+    "label": "destinazione_uso_non_residenziale",
+    "value": "unselected"
+}
+{
+    "label": "destinazione_uso_classificazione",
+    "value": "E.1(1)"
+}
+{
+    "label": "oggetto_attestato_intero_edificio",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_unita_immobiliare",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_gruppo_unita_immobiliare",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_numero_unita",
+    "value": "1"
+}
+{
+    "label": "oggetto_attestato_nuova_costruzione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_passaggio_proprieta",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_locazione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_ristrutturazione_importante",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_riqualificazione_energetica",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_altro",
+    "value": "unselected"
+}
+{
+    "label": "dati_identificativi_regione",
+    "value": "Liguria"
+}
+{
+    "label": "dati_identificativi_comune",
+    "value": "Arenzano (GE)"
+}
+{
+    "label": "dati_identificativi_indirizzo",
+    "value": "Via Punta del Gabbiano 20"
+}
+{
+    "label": "dati_identificativi_piano",
+    "value": "2"
+}
+{
+    "label": "dati_identificativi_interno",
+    "value": "A"
+}
+{
+    "label": "dati_identificativi_zona_climatica",
+    "value": "D"
+}
+{
+    "label": "dati_identificativi_anno_costruzione",
+    "value": "1967"
+}
+{
+    "label": "dati_identificativi_superficie_riscaldata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_superficie_raffrescata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_volume_lordo_riscaldato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_volume_lordo_raffrescato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_gis_lat",
+    "value": "44,4,"
+}
+{
+    "label": "dati_identificativi_gis_lon",
+    "value": "8,666667"
+}
+{
+    "label": "dati_identificativi_provincia",
+    "value": 0.975
+}
+{
+    "label": "dati_identificativi_cod_istat",
+    "value": 0.976
+}
+{
+    "label": "dati_identificativi_cap",
+    "value": 0.975
+}
+{
+    "label": "destinazione_uso_residenziale",
+    "value": "selected"
+}
+{
+    "label": "destinazione_uso_non_residenziale",
+    "value": "unselected"
+}
+{
+    "label": "destinazione_uso_classificazione",
+    "value": "E.1(1)"
+}
+{
+    "label": "oggetto_attestato_intero_edificio",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_unita_immobiliare",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_gruppo_unita_immobiliare",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_numero_unita",
+    "value": "1"
+}
+{
+    "label": "oggetto_attestato_nuova_costruzione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_passaggio_proprieta",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_locazione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_ristrutturazione_importante",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_riqualificazione_energetica",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_altro",
+    "value": "unselected"
+}
+{
+    "label": "dati_identificativi_regione",
+    "value": "Liguria"
+}
+{
+    "label": "dati_identificativi_comune",
+    "value": "Arenzano (GE)"
+}
+{
+    "label": "dati_identificativi_indirizzo",
+    "value": "Via Punta del Gabbiano 20"
+}
+{
+    "label": "dati_identificativi_piano",
+    "value": "2"
+}
+{
+    "label": "dati_identificativi_interno",
+    "value": "A"
+}
+{
+    "label": "dati_identificativi_zona_climatica",
+    "value": "D"
+}
+{
+    "label": "dati_identificativi_anno_costruzione",
+    "value": "1967"
+}
+{
+    "label": "dati_identificativi_superficie_riscaldata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_superficie_raffrescata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_volume_lordo_riscaldato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_volume_lordo_raffrescato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_gis_lat",
+    "value": "44,4,"
+}
+{
+    "label": "dati_identificativi_gis_lon",
+    "value": "8,666667"
+}
+{
+    "label": "dati_identificativi_provincia",
+    "value": 0.975
+}
+{
+    "label": "dati_identificativi_cod_istat",
+    "value": 0.976
+}
+{
+    "label": "dati_identificativi_cap",
+    "value": 0.975
+}
+{
+    "label": "destinazione_uso_residenziale",
+    "value": "selected"
+}
+{
+    "label": "destinazione_uso_non_residenziale",
+    "value": "unselected"
+}
+{
+    "label": "destinazione_uso_classificazione",
+    "value": "E.1(1)"
+}
+{
+    "label": "oggetto_attestato_intero_edificio",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_unita_immobiliare",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_gruppo_unita_immobiliare",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_numero_unita",
+    "value": "1"
+}
+{
+    "label": "oggetto_attestato_nuova_costruzione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_passaggio_proprieta",
+    "value": "selected"
+}
+{
+    "label": "oggetto_attestato_locazione",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_ristrutturazione_importante",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_riqualificazione_energetica",
+    "value": "unselected"
+}
+{
+    "label": "oggetto_attestato_altro",
+    "value": "unselected"
+}
+{
+    "label": "dati_identificativi_regione",
+    "value": "Liguria"
+}
+{
+    "label": "dati_identificativi_comune",
+    "value": "Arenzano (GE)"
+}
+{
+    "label": "dati_identificativi_indirizzo",
+    "value": "Via Punta del Gabbiano 20"
+}
+{
+    "label": "dati_identificativi_piano",
+    "value": "2"
+}
+{
+    "label": "dati_identificativi_interno",
+    "value": "A"
+}
+{
+    "label": "dati_identificativi_zona_climatica",
+    "value": "D"
+}
+{
+    "label": "dati_identificativi_anno_costruzione",
+    "value": "1967"
+}
+{
+    "label": "dati_identificativi_superficie_riscaldata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_superficie_raffrescata",
+    "value": "66,8 m2"
+}
+{
+    "label": "dati_identificativi_volume_lordo_riscaldato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_volume_lordo_raffrescato",
+    "value": "298,7 m3"
+}
+{
+    "label": "dati_identificativi_gis_lat",
+    "value": "44,4,"
+}
+{
+    "label": "dati_identificativi_gis_lon",
+    "value": "8,666667"
+}
+{
+    "label": "dati_identificativi_provincia",
+    "value": 0.975
+}
+{
+    "label": "dati_identificativi_cod_istat",
+    "value": 0.976
+}
+{
+    "label": "dati_identificativi_cap",
+    "value": 0.975
+}
+]
