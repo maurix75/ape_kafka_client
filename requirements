@@ -1,0 +1,14 @@
+anyio==4.8.0
+ape_kafka_client @ git+https://github.com/maurix75/ape_kafka_client.git@b9353f1252cb110a42d37b614830a7fb00751400
+attrs==25.1.0
+cachetools==5.5.2
+certifi==2025.1.31
+confluent-kafka==2.8.0
+exceptiongroup==1.2.2
+fastavro==1.10.0
+h11==0.14.0
+httpcore==1.0.7
+httpx==0.28.1
+idna==3.10
+sniffio==1.3.1
+typing_extensions==4.12.2

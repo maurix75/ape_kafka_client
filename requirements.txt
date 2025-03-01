@@ -1,0 +1,17 @@
+-e git+https://github.com/maurix75/ape_kafka_client.git@858ed3a331b62a8cae9eb17672b52dd62d2830e8#egg=ape_kafka_client
+azure-ai-documentintelligence==1.0.0
+azure-ai-formrecognizer==3.3.3
+azure-common==1.1.28
+azure-core==1.32.0
+certifi==2025.1.31
+charset-normalizer==3.4.1
+confluent-kafka==2.8.2
+idna==3.10
+isodate==0.7.2
+msrest==0.7.1
+oauthlib==3.2.2
+requests==2.32.3
+requests-oauthlib==2.0.0
+six==1.17.0
+typing_extensions==4.12.2
+urllib3==2.3.0
