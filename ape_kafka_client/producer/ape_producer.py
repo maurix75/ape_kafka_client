@@ -1,15 +1,19 @@
 from confluent_kafka import SerializingProducer
-from confluent_kafka.schema_registry import SchemaRegistryClient
-from confluent_kafka.schema_registry.avro import AvroSerializer
 from confluent_kafka.serialization import StringSerializer
+from confluent_kafka.schema_registry.json_schema import JSONSerializer
 from typing import Dict, Any
 import json
 import os
 from configparser import ConfigParser
 
-class ApeProducer:
 
-    
+# def json_serializer(obj):
+#     if obj is None:
+#         return None
+#     return json.dumps(obj).encode('utf-8')
+
+
+class ApeProducer:    
 
     def create_kafka_config_from_file(config_file_name: str) -> dict:
 
@@ -42,15 +46,10 @@ class ApeProducer:
             'sasl.password': raw_config.get('KAFKA.INNOVATIVE.PASSWORD'),
         }
     
-        # Crea la configurazione del client Schema Registry
-        schema_registry_config = {
-            'url': raw_config.get('KAFKA.CLOUD.SCHEMA.REGISTRY.HOST'),
-            'basic.auth.user.info': f"{raw_config.get('KAFKA.CLOUD.SCHEMA.REGISTRY.USER')}:{raw_config.get('KAFKA.CLOUD.SCHEMA.REGISTRY.PASSWORD')}"
-        }
+       
     
         return {
-            'kafka_config': kafka_config,
-            'schema_registry_config': schema_registry_config
+            'kafka_config': kafka_config           
         }
     
     def find_file_path(filename: str) -> str:
@@ -78,26 +77,16 @@ class ApeProducer:
         
         return None  # File non trovato
 
+    
     def __init__(self, config_file: str = "conf_env.properties"):
         # Ottieni la configurazione dal file
         configs = ApeProducer.create_kafka_config_from_file(config_file)
         kafka_config = configs['kafka_config']
-        schema_registry_config = configs['schema_registry_config']
         
-        # Schema Registry client configuration
-        schema_registry_client = SchemaRegistryClient(schema_registry_config)
-
-        # Create Avro serializer
-        value_serializer = AvroSerializer(
-            schema_registry_client=schema_registry_client,
-            schema_str=self._get_avro_schema(),
-        )
-
         # Producer configuration
         producer_conf = {
-            'bootstrap.servers': kafka_config['bootstrap.servers'],
-            'key.serializer': StringSerializer('utf_8'),
-            'value.serializer': value_serializer,
+            'bootstrap.servers': kafka_config['bootstrap.servers'],            
+            'value.serializer': lambda v, ctx: json.dumps(v).encode('utf-8') if v is not None else None, 
             'security.protocol': kafka_config['security.protocol'], 
             'sasl.mechanisms': kafka_config['sasl.mechanisms'],
             'sasl.username': kafka_config['sasl.username'],
@@ -105,48 +94,10 @@ class ApeProducer:
         }
         
         self.producer = SerializingProducer(producer_conf)
-        self.topic = 'ape-topic'  # Potresti voler rendere questo configurabile
+        self.topic = 'ape-topic'
 
-    def _get_avro_schema(self) -> str:
-        return """
-        {
-          "type": "record",
-          "name": "APEDocument",
-          "namespace": "it.ape.schema",
-          "fields": [
-            {"name": "destinazione_uso_residenziale", "type": "string"},
-            {"name": "destinazione_uso_non_residenziale", "type": "string"},
-            {"name": "destinazione_uso_classificazione", "type": "string"},
-            {"name": "oggetto_attestato_intero_edificio", "type": "string"},
-            {"name": "oggetto_attestato_unita_immobiliare", "type": "string"},
-            {"name": "oggetto_attestato_gruppo_unita_immobiliare", "type": "string"},
-            {"name": "oggetto_attestato_numero_unita", "type": "string"},
-            {"name": "oggetto_attestato_nuova_costruzione", "type": "string"},
-            {"name": "oggetto_attestato_passaggio_proprieta", "type": "string"},
-            {"name": "oggetto_attestato_locazione", "type": "string"},
-            {"name": "oggetto_attestato_ristrutturazione_importante", "type": "string"},
-            {"name": "oggetto_attestato_riqualificazione_energetica", "type": "string"},
-            {"name": "oggetto_attestato_altro", "type": "string"},
-            {"name": "dati_identificativi_regione", "type": "string"},
-            {"name": "dati_identificativi_comune", "type": "string"},
-            {"name": "dati_identificativi_indirizzo", "type": "string"},
-            {"name": "dati_identificativi_piano", "type": "string"},
-            {"name": "dati_identificativi_interno", "type": "string"},
-            {"name": "dati_identificativi_zona_climatica", "type": "string"},
-            {"name": "dati_identificativi_anno_costruzione", "type": "string"},
-            {"name": "dati_identificativi_superficie_riscaldata", "type": "string"},
-            {"name": "dati_identificativi_superficie_raffrescata", "type": "string"},
-            {"name": "dati_identificativi_volume_lordo_riscaldato", "type": "string"},
-            {"name": "dati_identificativi_volume_lordo_raffrescato", "type": "string"},
-            {"name": "dati_identificativi_gis_lat", "type": "string"},
-            {"name": "dati_identificativi_gis_lon", "type": "string"},
-            {"name": "dati_identificativi_provincia", "type": ["null", "double"]},
-            {"name": "dati_identificativi_cod_istat", "type": ["null", "double"]},
-            {"name": "dati_identificativi_cap", "type": ["null", "double"]}
-          ]
-        }
-        """
 
+    
     def delivery_report(self, err, msg):
         """Delivery report handler for produced messages"""
         if err is not None:
@@ -155,7 +106,7 @@ class ApeProducer:
             print(f'Message delivered to {msg.topic()} [{msg.partition()}] at offset {msg.offset()}')
 
     def produce_message(self, key: str, value: Dict[str, Any]):
-        """Produce a message to the Kafka topic"""
+        print(f"produce message in topic: {self.topic}")
         try:
             self.producer.produce(
                 topic=self.topic,
