@@ -26,7 +26,7 @@ class ApeProducer:
         with open(config_file, 'r') as f:
             for line in f:
                 line = line.strip()
-                if line and not line.startswith('#'):
+                if line and not line.startswith('#') and not line.startswith('['):
                     try:
                         key, value = line.split('=', 1)
                         raw_config[key.strip()] = value.strip()
@@ -57,11 +57,21 @@ class ApeProducer:
         current_dir = os.path.abspath(os.path.dirname(__file__))  # Directory dello script
     
         while True:
+            # Controlla il file nella directory corrente
             candidate = os.path.join(current_dir, filename)
             if os.path.isfile(candidate):
                 return candidate
             
-            parent_dir = os.path.dirname(current_dir)  # Salire di un livello
+            # Controlla nelle sottodirectory di un solo livello
+            for subdir in os.listdir(current_dir):
+                subdir_path = os.path.join(current_dir, subdir)
+                if os.path.isdir(subdir_path):
+                    candidate = os.path.join(subdir_path, filename)
+                    if os.path.isfile(candidate):
+                        return candidate
+            
+            # Salire di un livello nella gerarchia delle cartelle
+            parent_dir = os.path.dirname(current_dir)
             if parent_dir == current_dir:  # Se siamo alla root, fermarsi
                 break
             current_dir = parent_dir
@@ -187,7 +197,7 @@ if __name__ == "__main__":
     producer = ApeProducer()
     
     # Example: Process an APE JSON file
-    ape_file = "32888643.json"
+    ape_file = "../tests/input/32888643.json"
     ape_data = ApeProducer.parse_ape_json(ape_file)
     
     try:
