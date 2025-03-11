@@ -1,22 +1,14 @@
 from confluent_kafka import SerializingProducer
 from confluent_kafka.serialization import StringSerializer
-from confluent_kafka.schema_registry.json_schema import JSONSerializer
 from typing import Dict, Any
 import json
 import os
 from configparser import ConfigParser
 
-
-# def json_serializer(obj):
-#     if obj is None:
-#         return None
-#     return json.dumps(obj).encode('utf-8')
-
-
 class ApeProducer:    
 
+    @staticmethod
     def create_kafka_config_from_file(config_file_name: str) -> dict:
-
         config_file = ApeProducer.find_file_path(config_file_name)
         
         if config_file:
@@ -40,18 +32,17 @@ class ApeProducer:
         # Crea la configurazione del client Kafka
         kafka_config = {
             'bootstrap.servers': raw_config.get('KAFKA.CLOUD.BOOTSTRAP.SERVERS'),
-            'security.protocol': 'SASL_SSL',
-            'sasl.mechanisms': 'PLAIN',
+            'security.protocol': raw_config.get('KAFKA.SECURITY.PROTOCOL', 'SASL_SSL'),
+            'sasl.mechanisms': raw_config.get('KAFKA.SASL.MECHANISMS', 'PLAIN'),
             'sasl.username': raw_config.get('KAFKA.INNOVATIVE.USER'),
             'sasl.password': raw_config.get('KAFKA.INNOVATIVE.PASSWORD'),
         }
-    
-       
     
         return {
             'kafka_config': kafka_config           
         }
     
+    @staticmethod
     def find_file_path(filename: str) -> str:
         current_dir = os.path.abspath(os.path.dirname(__file__))  # Directory dello script
     
@@ -94,7 +85,7 @@ class ApeProducer:
         }
         
         self.producer = SerializingProducer(producer_conf)
-        self.topic = 'ape-topic'
+        self.topic = 'ape.streaming'
 
 
     
@@ -105,13 +96,24 @@ class ApeProducer:
         else:
             print(f'Message delivered to {msg.topic()} [{msg.partition()}] at offset {msg.offset()}')
 
-    def produce_message(self, key: str, value: Dict[str, Any]):
+    def produce_message(self, key: str, value: Any):
         print(f"produce message in topic: {self.topic}")
         try:
+            # Convert the object to a dictionary
+            if hasattr(value, 'to_dict'):
+                value_dict = value.to_dict()
+            elif hasattr(value, 'to_json'):
+                value_dict = json.loads(value.to_json())
+            else:
+                value_dict = vars(value)
+            
+            # Convert the dictionary to a JSON string
+            cleaned_value = json.dumps(value_dict, separators=(',', ':'))
+            
             self.producer.produce(
                 topic=self.topic,
                 key=key,
-                value=value,
+                value=cleaned_value,
                 on_delivery=self.delivery_report
             )
             # Wait up to 1 second for events. Callbacks will be invoked during
@@ -127,29 +129,32 @@ class ApeProducer:
         """Flush the producer"""
         self.producer.flush()
 
-    def parse_ape_json(file_name: str) -> Dict[str, Any]:
+    @staticmethod
+    def parse_ape_json(root_dir: str, file_name: str) -> Dict[str, Any]:
         """Parse APE JSON file and create a single document"""
         ape_doc = {}
-        file_path=os.path.join(os.path.dirname(__file__), file_name)
-        with open(file_path, 'r') as f:
-            for line in f:
-                try:
-                    field = json.loads(line)
-                    ape_doc[field['label']] = field['value']
-                except json.JSONDecodeError:
-                    continue
-        return ape_doc
-
-
-
+        
+        # Cerca il file in modo ricorsivo a partire da root_dir
+        for dirpath, _, filenames in os.walk(root_dir):
+            if file_name in filenames:
+                file_path = os.path.join(dirpath, file_name)
+                with open(file_path, 'r') as f:
+                    try:
+                        ape_doc = json.load(f)
+                    except json.JSONDecodeError as e:
+                        print(f"Errore nel parsing del file JSON: {e}")
+                return ape_doc
+        
+        raise FileNotFoundError(f"File {file_name} non trovato in {root_dir}")
 
 # Example usage
 if __name__ == "__main__":
     producer = ApeProducer()
     
     # Example: Process an APE JSON file
-    ape_file = "../tests/input/32888643.json"
-    ape_data = ApeProducer.parse_ape_json(ape_file)
+    root_dir = "/home/maurix/VSCodeProjects/ape/ape_kafka_client"
+    ape_file = "32888643.json"
+    ape_data = ApeProducer.parse_ape_json(root_dir, ape_file)
     
     try:
         # Use the file name or a unique identifier as the key
